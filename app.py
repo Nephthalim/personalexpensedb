@@ -1,10 +1,10 @@
 from flask import Flask, request, jsonify, render_template, url_for, redirect
 from flask_sqlalchemy import SQLAlchemy
 from datetime import datetime
-import os
+
 
 app = Flask(__name__)
-basedir = os.path.abspath(os.path.dirname(__file__))
+
 
 # Database
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///test.db'
