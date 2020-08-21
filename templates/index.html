@@ -1,0 +1,63 @@
+{% extends 'base.html' %}
+
+{% block head %}
+
+<h1 class="text-center">Personal Expenses</h1>
+
+{% endblock %}
+
+{% block body %}
+
+<div class="container text-center">
+    {% if items|length ==0%}
+    <h4 style="text-align: center">There are no expenses made. Enter one below!</h4>
+    {%else%}
+    <table class="table">
+        <thead>
+            <tr>
+                <th scope="col">#</th>
+                <th style="text-align: center" scope="col">Item</th>
+                <th style="text-align: center" scope="col">Date</th>
+                <th style="text-align: center" scope="col">Price</th>
+                <th style="text-align: center" scope="col">Quantity</th>
+                <th scope="col"></th>
+
+            </tr>
+        </thead>
+        <tbody>
+            {%for item in items %}
+            <tr>
+                <th>{{item.id}}</th>
+                <td>{{item.name}}</td>
+                <td>{{item.date.strftime("%x")}}</td>
+                <td>{{item.price}}</td>
+                <td>{{item.qty}}</td>
+                <td>
+                    <a href="/delete_item/{{item.id}}">Delete</a>
+                    <br>
+                    <a href="/update_item/{{item.id}}">Update</a>
+                </td>
+
+            </tr>
+
+        </tbody>
+        {% endfor %}
+
+    </table>
+
+    {%endif%}
+
+</div>
+<div class="container text-center">
+    <form action="/" method="POST" methods="GET">
+        <input type="text" name="name" placeholder="Item name" id="content" required=true>
+        <input type="number" name="price" placeholder="Price" id="content" required=true>
+        <input type="number" name="qty" placeholder="Quantity" id="content" required=true>
+        <input class="btn btn-primary" type="submit" value="Add Item">
+    </form>
+
+</div>
+</div>
+
+
+{% endblock %}

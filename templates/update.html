@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+{% block head %}
+
+<h1 class="text-center">Personal Expenses</h1>
+
+{% endblock %}
+
+{% block body %}
+
+<div class="container text-center">
+    <form action="/update_item/{{item.id}}" method="POST" methods="GET">
+        <input type="text" name="name" id="content" required=true value="{{item.name}}">
+        <input type="number" name="price" id="content" required=true value="{{item.price}}">
+        <input type="number" name="qty" id="content" required=true value="{{item.qty}}">
+        <input class="btn btn-primary" type="submit" value="Update Item">
+    </form>
+</div>
+
+
+{% endblock %}
